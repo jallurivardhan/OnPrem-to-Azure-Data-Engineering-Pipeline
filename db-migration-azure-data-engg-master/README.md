@@ -1,24 +1,38 @@
-# db-migration-azure-data-engg
+# On-Prem to Azure Data Engineering Pipeline
 
-An end-to-end data engineering project involving:
-- Migration of on-premises SQL Server database to Azure Cloud
-- Data Pipeline creation using Azure Data Factory to automate data transfer from SQL Server to Azure Data Lake
-- Usage of Azure Databricks to transform raw data into analytical dataset
-- Creation of Azure Synapse Analytics SQL Database to query data in data lake for reporting needs
-- Creation of Power BI dashboards to visualize key metrics and display insights
+An end-to-end Azure data engineering project that migrates an on-premises SQL Server database to the Azure cloud and builds a complete analytics pipeline — from ingestion to reporting — using modern, secure, and scalable services.
 
-Prerequisites:
-- Knowledge of SQL and Python
-- Fundamentals of Azure Cloud services (Data Factory, Data Lake, Azure Databricks, Synapse Analytics, Key Vault) and Power BI
+## 🎯 Objective
+Automate data movement from on-prem SQL Server to Azure, transform it into analytics-ready datasets, and deliver business insights through Power BI dashboards.
 
-## Architecture Diagram
+## 🧱 Architecture
+![Architecture Diagram](azure-architecture-diagram.png)
 
-![architecture-diagram](azure-architecture-diagram.png?raw=true)
+**Flow (Bronze → Silver → Gold):**
+- **Azure Data Factory**: Orchestrates ingestion from on-prem SQL Server to **Azure Data Lake Gen2** (Bronze).
+- **Azure Databricks**: Cleans, enriches, and standardizes data (Silver), then builds business aggregates (Gold).
+- **Azure Synapse Analytics**: Exposes Gold data via external tables for fast SQL analytics.
+- **Power BI**: Connects to Synapse for dashboards and reports.
+- **Azure Key Vault + Entra ID**: Secrets, identity, and access governance across the stack.
 
+## ⚙️ What This Project Includes
+- **0_project_setup** – resource setup & connectivity
+- **1_data_ingestion** – ADF pipelines, linked services, and datasets
+- **2_data_transformation** – Databricks notebooks for Bronze/Silver/Gold
+- **3_data_loading** – Synapse SQL views/tables over the lake
+- **4_data_reporting** – Power BI model and example dashboard
 
-## Project Steps
-- [0_project_setup](./0_project_setup/README.md)
-- [1_data_ingestion](./1_data_ingestion/README.md)
-- [2_data_transformation](./2_data_transformation/README.md)
-- [3_data_loading](./3_data_loading/README.md)
-- [4_data_reporting](./4_data_reporting/README.md)
+## 📈 Outcomes
+- Automated, repeatable migration from on-prem to cloud
+- Lakehouse design with **Bronze/Silver/Gold** layers
+- Scalable transformations with Databricks
+- Queryable datasets via Synapse
+- Shareable insights through Power BI
+
+## 🧰 Skills Demonstrated
+Azure Data Factory • Azure Data Lake Gen2 • Azure Databricks • Synapse Analytics • Power BI • Key Vault • Entra ID • SQL • Python • Data Modeling • Governance
+
+## 🔐 Security & Governance
+- Secrets managed in **Key Vault**
+- Role-based access via **Entra ID**
+- Least-privilege access on storage and compute
